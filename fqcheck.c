@@ -34,7 +34,7 @@ int main(int argc, char* argv[])
         seq_2->name.s[strlen(seq_2->name.s)-1] = '\0';
         //printf("%s\t%s\n", seq_1->name.s, seq_2->name.s);
         if(strcmp(seq_1->name.s, seq_2->name.s) != 0) {
-            printf("fq1 seq name different from seq2:\t%s\t%s\n", seq_1->name.s, seq_2->name.s);
+            printf("fq1 seq name different from seq2:\t%s\t%s\n%s\n%s\n", seq_1->name.s, seq_2->name.s, argv[1], argv[2]);
             return 1;
         }
         l1 = kseq_read(seq_1);
@@ -45,6 +45,8 @@ int main(int argc, char* argv[])
         printf("%s\n", seq_1->name.s);
         printf("%s\n", seq_1->seq.s);
         printf("%s\n", seq_1->qual.s);
+		printf("%s\n", argv[1]);
+		printf("%s\n", argv[2]);
         return  2;
     }
 
@@ -53,11 +55,15 @@ int main(int argc, char* argv[])
         printf("%s\n", seq_2->name.s);
         printf("%s\n", seq_2->seq.s);
         printf("%s\n", seq_2->qual.s);
+		printf("%s\n", argv[1]);
+		printf("%s\n", argv[2]);
         return  2;
     }
 
     if ((l1 >=0 && l2 < 0) || (l1 < 0 && l2 >=0) ) {
         printf("fq1 seq number is different with fq2\n");
+		printf("%s\n", argv[1]);
+		printf("%s\n", argv[2]);
         return  3;
     }
     return 0;
